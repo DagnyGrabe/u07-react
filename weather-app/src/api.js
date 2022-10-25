@@ -6,10 +6,10 @@ export const geoApiOptions = {
 	}
 };
 
-export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
+export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?";
 
 
 
-export const WEATHER_API_URL = "https://api.openweathermap.org/data/3.0";
+export const WEATHER_API_URL = "https://api.openweathermap.org/data/";
 
 export const WEATHER_API_KEY ="ea1bef07164f62c098748d84d35962f1";

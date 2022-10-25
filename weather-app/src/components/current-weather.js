@@ -15,12 +15,12 @@ const CurrentWeather = ({data}) => {
                 <img 
                 alt="weather-icon"
                 src={require(`../icons/${data.weather[0].icon}.png`)} />
-                <p>{Math.round(data.temp)}°C</p>
+                <p>{Math.round(data.main.temp)}°C</p>
             </div>
             <div>
                 <p>details</p>
-                <p>sunrise: {getTime(data.sunrise)}</p>
-                <p>sunset: {getTime(data.sunset)}</p>
+                <p>sunrise: {getTime(data.sys.sunrise)}</p>
+                <p>sunset: {getTime(data.sys.sunset)}</p>
                 <ul>
                     
                 </ul>

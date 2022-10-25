@@ -1,6 +1,8 @@
-import React from "react";
+import react from "react";
 
-function UserPositionButton({setLat, setLon}) {
+
+
+function UserPositionButton({ setLat, setLon}) {
 
     const getUserCoords = () => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -9,6 +11,7 @@ function UserPositionButton({setLat, setLon}) {
         });
 
     }
+    
      
     return (
         <button
