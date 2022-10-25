@@ -1,51 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
 import CurrentWeather from "./components/current-weather";
+import UserPositionButton from "./components/user-position-button";
 
 
 function App() {
 
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
-
-  const getUserCoordinates = async () => {
-
-    const getCoords = () => new Promise((success, error) => 
-    navigator.geolocation.getCurrentPosition(success, error));
-
-    try {
-      const response = await getCoords();
-      setLat(response.coords.latitude);
-      setLon(response.coords.longitude);
-    } catch (err) {
-      console.log(err);
-    }
-
-  }
-
-
-  const currentWeatherUrl =
-    `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`;
-
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
+  const WeatherUrl =
+    `${WEATHER_API_URL}/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${WEATHER_API_KEY}&units=metric`;
 
-  const getCurrentWeather = async () => {
-    try {
-      const response = await axios.get(currentWeatherUrl);
-      console.log(response);
-      setCurrentWeather(response.data);
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+
+    const getWeather = async () => {
+      if (lat && lon) {
+        try {
+          const response = await axios.get(WeatherUrl);
+
+          console.log(response);
+          setCurrentWeather(response.data.current);
+          //setForecast(forecastResponse.data);
+        } catch (err) {
+          console.log(err);
+        }
+      }
     }
-  }
+    getWeather();
+  }, [lon]);
 
   return (
     <div className="App">
       <h1 className="text-2xl text-red-500">hello</h1>
-      <button
-        onClick={() => getUserCoordinates()}>Use my location</button>
+      <UserPositionButton setLat={setLat} setLon={setLon} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
 
 
