@@ -18,7 +18,7 @@ function App() {
   const [dailyForecast, setDailyForecast] = useState(null);
   const [units, setUnits] = useState('metric');
   const [displayUnits, setDisplayUnits] = useState(['°C', 'm/s']);
-  
+
 
   const currentWeatherUrl =
     `${WEATHER_API_URL}2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${units}`;
@@ -38,7 +38,7 @@ function App() {
           setCurrentWeather(currentResponse.data);
           setHourlyForecast(forecastResponse.data.hourly);
           setDailyForecast(forecastResponse.data.daily);
-        
+
         } catch (err) {
           console.log(err);
         }
@@ -49,12 +49,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-2xl text-red-500">hello</h1>
+      <h1 className="text-red-500 text-shadow m-24">hello</h1>
       <UserPositionButton setLat={setLat} setLon={setLon} />
       <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
-      {currentWeather && <CurrentWeather data={currentWeather} displayUnits={displayUnits}/>}
-      {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits}/>}
-      {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits}/>}
+      <div className="container mx-auto my-12 px-4 flex flex-col justify-start items-center">
+        {currentWeather && <CurrentWeather data={currentWeather} displayUnits={displayUnits} />}
+        {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits} />}
+        {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits} />}
+      </div>
     </div>
   );
 }
