@@ -15,7 +15,8 @@ function UserPositionButton({ setLat, setLon}) {
      
     return (
         <button
-        onClick={() => getUserCoords()}>
+        onClick={() => getUserCoords()}
+        className="p-2 m-2 text-blue-600 border-2">
         Use my location
         </button>
     );

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./index.css";
 import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
 import CurrentWeather from "./components/current-weather";
 import UserPositionButton from "./components/user-position-button";
 import HourlyForecast from "./components/hourly-forecast";
 import DailyForecast from "./components/daily-forecast";
+import UnitsButton from "./components/units-button";
 
 
 function App() {
@@ -14,11 +16,14 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState(null);
   const [dailyForecast, setDailyForecast] = useState(null);
+  const [units, setUnits] = useState('metric');
+  const [displayUnits, setDisplayUnits] = useState(['°C', 'm/s']);
+  
 
   const currentWeatherUrl =
-    `${WEATHER_API_URL}2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`;
+    `${WEATHER_API_URL}2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${units}`;
   const forecastUrl =
-    `${WEATHER_API_URL}3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${WEATHER_API_KEY}&units=metric`;
+    `${WEATHER_API_URL}3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${WEATHER_API_KEY}&units=${units}`;
 
   useEffect(() => {
 
@@ -40,15 +45,16 @@ function App() {
       }
     }
     getWeather();
-  }, [lon]);
+  }, [lon, units]);
 
   return (
     <div className="App">
       <h1 className="text-2xl text-red-500">hello</h1>
       <UserPositionButton setLat={setLat} setLon={setLon} />
-      {currentWeather && <CurrentWeather data={currentWeather} />}
-      {hourlyForecast && <HourlyForecast data={hourlyForecast} />}
-      {dailyForecast && <DailyForecast data={dailyForecast} />}
+      <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
+      {currentWeather && <CurrentWeather data={currentWeather} displayUnits={displayUnits}/>}
+      {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits}/>}
+      {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits}/>}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 
 
-function HourlyForecast({data}) {
+function HourlyForecast({ data, displayUnits }) {
 
     const getHour = (time) => {
         let hour = new Date(time * 1000).toLocaleTimeString(
@@ -18,7 +18,7 @@ function HourlyForecast({data}) {
                     <p>{item.weather[0].description}</p>
                     <img alt='weather icon'
                          src={require(`../icons/${item.weather[0].icon}.png`)} />
-                    <p>{Math.round(item.temp)}°C</p>
+                    <p>{Math.round(item.temp)}{displayUnits[0]}</p>
                 </div>
             ))}
         </div>

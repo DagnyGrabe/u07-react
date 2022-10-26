@@ -1,6 +1,6 @@
 
 
-function DailyForecast({data}) {
+function DailyForecast({ data, displayUnits }) {
 
     const getDay = (day) => {
         let weekDay = new Date(day * 1000).toLocaleDateString(
@@ -16,8 +16,8 @@ function DailyForecast({data}) {
                     <p>{item.weather[0].description}</p>
                     <img alt='weather icon'
                          src={require(`../icons/${item.weather[0].icon}.png`)} />
-                    <p>High: {Math.round(item.temp.max)}°C</p>
-                    <p>Low: {Math.round(item.temp.min)}°C</p>
+                    <p>High: {Math.round(item.temp.max)}{displayUnits[0]}</p>
+                    <p>Low: {Math.round(item.temp.min)}{displayUnits[0]}</p>
                 </div>
             ))}
         </div>
