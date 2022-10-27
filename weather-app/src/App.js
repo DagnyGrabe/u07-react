@@ -47,15 +47,22 @@ function App() {
     getWeather();
   }, [lon, units]);
 
+  const getWindDirection = (angle) => {
+    const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
+    return directions[Math.round(angle / 45) % 8];
+  }
+
   return (
     <div className="App">
       <h1 className="text-red-500 text-shadow m-24">hello</h1>
       <UserPositionButton setLat={setLat} setLon={setLon} />
       <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
-      <div className="container mx-auto my-12 px-4 flex flex-col justify-start items-center">
-        {currentWeather && <CurrentWeather data={currentWeather} displayUnits={displayUnits} />}
-        {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits} />}
-        {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits} />}
+      <div className="container w-10/12 lg:w-9/12 xl:w-8/12 mx-auto my-12 flex flex-col justify-start text-white text-shadow">
+        {currentWeather && <CurrentWeather data={currentWeather} item={dailyForecast[0]} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
+        
+        {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
+        
+        {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
       </div>
     </div>
   );
