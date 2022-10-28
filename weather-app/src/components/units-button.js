@@ -21,8 +21,10 @@ function UnitsButton({ setUnits, setDisplayUnits }) {
 
     return (
         <button onClick={() => changeUnits(unit)}
-                className="p-2 m-2 bg-black text-white">
-            use {unit} units
+        className="py-2 px-4 m-2 text-white text-lg text-shadow 
+        rounded-3xl bg-white bg-opacity-40 hover:ring-2 ring-white 
+        w-52 transition duration-500">
+            Use {unit} units
         </button>
     );
 

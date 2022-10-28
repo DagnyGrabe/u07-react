@@ -14,9 +14,9 @@ function DailyCard({ item, displayUnits, getWindDirection }) {
     }
 
     return (
-        <div className="mx-2 rounded-xl bg-white bg-opacity-30 w-48 flex-shrink-0">
+        <div className="mx-1 rounded-xl bg-white bg-opacity-25 w-44 flex-shrink-0">
             <div className="flex flex-col justify-between items-center h-52">
-                <h4 className="text-xl font-bold mt-4">
+                <h4 className="text-xl font-bold mt-5">
                     {getDay(item.dt)}
                 </h4>
                 <img className="my-3 w-16"

@@ -16,7 +16,9 @@ function UserPositionButton({ setLat, setLon}) {
     return (
         <button
         onClick={() => getUserCoords()}
-        className="p-2 m-2 text-blue-600 border-2">
+        className="py-2 px-4 m-2 text-white text-lg text-shadow 
+        rounded-3xl bg-white bg-opacity-40 hover:ring-2 ring-white 
+        w-52 transition duration-500">
         Use my location
         </button>
     );

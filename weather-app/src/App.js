@@ -7,6 +7,7 @@ import UserPositionButton from "./components/user-position-button";
 import HourlyForecast from "./components/hourly-forecast";
 import DailyForecast from "./components/daily-forecast";
 import UnitsButton from "./components/units-button";
+import SearchBox from "./components/search-box";
 
 
 function App() {
@@ -55,13 +56,16 @@ function App() {
   return (
     <div className="App">
       <h1 className="text-red-500 text-shadow m-24">hello</h1>
-      <UserPositionButton setLat={setLat} setLon={setLon} />
-      <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
+      <SearchBox setLat={setLat} setLon={setLon} />
+      <div className="flex flex-col sm:flex-row w-10/12 lg:w-9/12 xl:w-8/12 mx-auto">
+        <UserPositionButton setLat={setLat} setLon={setLon} />
+        <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
+      </div>
       <div className="container w-10/12 lg:w-9/12 xl:w-8/12 mx-auto my-12 flex flex-col justify-start text-white text-shadow">
         {currentWeather && <CurrentWeather data={currentWeather} item={dailyForecast[0]} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
-        
+
         {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
-        
+
         {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
       </div>
     </div>

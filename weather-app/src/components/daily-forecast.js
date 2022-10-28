@@ -10,8 +10,8 @@ function DailyForecast({ data, displayUnits, getWindDirection }) {
         <>
             <h3 className="text-2xl font-bold uppercase mt-8">This week</h3>
             <div className="flex py-2 overflow-x-auto rounded-xl items-start">
-                {nextWeek.map((item) => (
-                    <DailyCard item={item} displayUnits={displayUnits} getWindDirection={getWindDirection} />
+                {nextWeek.map((item, idx) => (
+                    <DailyCard item={item} displayUnits={displayUnits} getWindDirection={getWindDirection} key={idx}/>
                 ))}
             </div>
         </>
