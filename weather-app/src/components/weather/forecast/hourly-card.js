@@ -14,17 +14,18 @@ function HourlyCard({ item, displayUnits, getWindDirection }) {
 
 
     return (
-        <div className="mx-1 rounded-xl bg-white bg-opacity-25 w-28 flex-shrink-0 text-center">
-            <div className="h-28 flex flex-col items-center">
-                <h4 className="text-xl font-bold mt-4 mb-2">
+        <div className="mx-1 rounded-xl bg-white bg-opacity-25 
+             w-28 flex-shrink-0 text-center">
+            <div className="h-30 flex flex-col justify-center items-center">
+                <h4 className="text-xl font-bold mt-4">
                     {getHour(item.dt)}
                 </h4>
                 <span className="flex flex-col">
                     <img alt='weather icon'
                         src={require(`../icons/${item.weather[0].icon}.png`)}
-                        className="w-10 ml-1"
+                        className="max-h-8 max-w-10 ml-1 object-scale-down my-2"
                     />
-                    <p className="text-lg font-bold">
+                    <p className="text-lg font-bold mb-1">
                         {Math.round(item.temp)}{displayUnits[0]}
                     </p>
                 </span>

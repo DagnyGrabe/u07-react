@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DetailsList from "./details-list";
+import DetailsList from "../details-list";
 import ExpandButton from "./expand-button";
 
 
@@ -19,7 +19,7 @@ function DailyCard({ item, displayUnits, getWindDirection }) {
                 <h4 className="text-xl font-bold mt-5">
                     {getDay(item.dt)}
                 </h4>
-                <img className="my-3 w-16"
+                <img className="my-3 max-w-14 max-h-12 object-scale-down"
                     alt='weather icon'
                     src={require(`../icons/${item.weather[0].icon}.png`)} />
                 <p className="text-md font-bold mx-5 my-1 text-center">
@@ -33,7 +33,8 @@ function DailyCard({ item, displayUnits, getWindDirection }) {
             </div>
 
             <div className={`${expanded ? "" : "hidden"} text-sm py-2 px-4`}>
-                <DetailsList item={item} displayUnits={displayUnits} getWindDirection={getWindDirection} />
+                <DetailsList item={item} displayUnits={displayUnits} 
+                getWindDirection={getWindDirection} />
             </div>
             <ExpandButton expanded={expanded} setExpanded={setExpanded} />
         </div>

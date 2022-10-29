@@ -1,5 +1,5 @@
 
-import { GEO_API_URL, geoApiOptions } from '../api';
+import { GEO_API_URL, geoApiOptions } from '../../api';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -9,10 +9,7 @@ function SearchBox({ setLat, setLon }) {
     const [query, setQuery] = useState("");
     const [options, setOptions] = useState(null);
     
-
     const geoUrl = `${GEO_API_URL}&namePrefix=${query}`
-
-
 
     useEffect(() => {
         const loadOptions = setTimeout(async () => {
@@ -27,7 +24,7 @@ function SearchBox({ setLat, setLon }) {
                     console.error(err);
                 }
             }
-        }, 1000)
+        }, 1000);
         return () => clearTimeout(loadOptions);
     }, [query]);
 
@@ -40,18 +37,25 @@ function SearchBox({ setLat, setLon }) {
     }
 
     return (
-        <form onSubmit={(e) => {e.preventDefault(); e.target.reset()}}>
+        <form className="mx-12 w-1/2">
             <input
-                className="relative"
+                className="w-full rounded-3xl px-8 py-2 bg-white bg-opacity-30 text-shadow
+                text-white text-lg border-2 border-white placeholder:text-gray-900 
+                placeholder:font-medium inner transition duration-250 focus:outline-none"
                 type="search"
-                placeholder="search location"
+                placeholder="Search location..."
                 onChange={(e) => setQuery(e.target.value)}
                 name="search">
             </input>
-            <ul>
+            <ul className={`${options? "border-2" : "" } w-10/12 mx-2 mt-2 flex flex-col 
+                justify-start items-start rounded-2xl overflow-hidden bg-white 
+                bg-opacity-30 border-white`}>
                 {options && options.map((city) => 
-                <li key={city.id}>
+                <li key={city.id}
+                    className="w-full">
                     <button
+                    className="px-6 py-2 w-full text-start text-gray-900 cursor-pointer 
+                    transition duration-250 inner rounded-xl"
                     type="submit"
                     onClick={(e) => selectOption(e.target)}
                     value={`${city.latitude} ${city.longitude}`}

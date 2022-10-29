@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./index.css";
 import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
-import CurrentWeather from "./components/current-weather";
-import UserPositionButton from "./components/user-position-button";
-import HourlyForecast from "./components/hourly-forecast";
-import DailyForecast from "./components/daily-forecast";
-import UnitsButton from "./components/units-button";
-import SearchBox from "./components/search-box";
-
+import Weather from "./components/weather/weather";
+import Heading from "./components/heading/heading";
 
 function App() {
 
@@ -19,7 +13,6 @@ function App() {
   const [dailyForecast, setDailyForecast] = useState(null);
   const [units, setUnits] = useState('metric');
   const [displayUnits, setDisplayUnits] = useState(['°C', 'm/s']);
-
 
   const currentWeatherUrl =
     `${WEATHER_API_URL}2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${units}`;
@@ -48,26 +41,26 @@ function App() {
     getWeather();
   }, [lon, units]);
 
-  const getWindDirection = (angle) => {
-    const directions = ['↑ N', '↗ NE', '→ E', '↘ SE', '↓ S', '↙ SW', '← W', '↖ NW'];
-    return directions[Math.round(angle / 45) % 8];
+  const weatherProps = {
+    currentWeather: currentWeather,
+    hourlyForecast: hourlyForecast,
+    dailyForecast: dailyForecast,
+    displayUnits: displayUnits,
+  }
+
+  const headingProps = {
+    setLat: setLat,
+    setLon: setLon,
+    setUnits: setUnits,
+    setDisplayUnits: setDisplayUnits
   }
 
   return (
     <div className="App">
-      <h1 className="text-red-500 text-shadow m-24">hello</h1>
-      <SearchBox setLat={setLat} setLon={setLon} />
-      <div className="flex flex-col sm:flex-row w-10/12 lg:w-9/12 xl:w-8/12 mx-auto">
-        <UserPositionButton setLat={setLat} setLon={setLon} />
-        <UnitsButton setUnits={setUnits} setDisplayUnits={setDisplayUnits} />
-      </div>
-      <div className="container w-10/12 lg:w-9/12 xl:w-8/12 mx-auto my-12 flex flex-col justify-start text-white text-shadow">
-        {currentWeather && <CurrentWeather data={currentWeather} item={dailyForecast[0]} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
+      <Heading props={headingProps} />
 
-        {hourlyForecast && <HourlyForecast data={hourlyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
+      <Weather props={weatherProps} />
 
-        {dailyForecast && <DailyForecast data={dailyForecast} displayUnits={displayUnits} getWindDirection={getWindDirection} />}
-      </div>
     </div>
   );
 }

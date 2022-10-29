@@ -1,5 +1,3 @@
-import react from "react";
-
 
 
 function UserPositionButton({ setLat, setLon}) {
@@ -11,8 +9,7 @@ function UserPositionButton({ setLat, setLon}) {
         });
 
     }
-    
-     
+       
     return (
         <button
         onClick={() => getUserCoords()}
