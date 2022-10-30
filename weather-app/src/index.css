@@ -20,8 +20,6 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
     background-attachment: fixed;
     background-size: 100% 100%;
-    padding: 50px 0;
-
 }
 
 .text-shadow {
@@ -30,6 +28,24 @@ body {
 
 .inner:hover , .inner:active, .inner:focus{
     box-shadow: inset 0 2px 4px 0 rgb(0, 0, 0, 0.5);
+}
+
+input::placeholder {
+    text-shadow: none;
+}
+
+.headline {
+    background-image: url('sky.jpg');
+    background-position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-clip: text;
+    color: transparent;
+    filter: grayscale(20%) brightness(70%) saturate(130%);
+    
+    letter-spacing: -5px;
+    
 }
 
 

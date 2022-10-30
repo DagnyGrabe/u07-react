@@ -13,6 +13,7 @@ function App() {
   const [dailyForecast, setDailyForecast] = useState(null);
   const [units, setUnits] = useState('metric');
   const [displayUnits, setDisplayUnits] = useState(['°C', 'm/s']);
+  const [timezone, setTimeZone] = useState('UTC');
 
   const currentWeatherUrl =
     `${WEATHER_API_URL}2.5/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=${units}`;
@@ -20,7 +21,7 @@ function App() {
     `${WEATHER_API_URL}3.0/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${WEATHER_API_KEY}&units=${units}`;
 
   useEffect(() => {
-
+    
     const getWeather = async () => {
       if (lat && lon) {
         try {
@@ -29,9 +30,11 @@ function App() {
 
           console.log(currentResponse);
           console.log(forecastResponse);
+
           setCurrentWeather(currentResponse.data);
           setHourlyForecast(forecastResponse.data.hourly);
           setDailyForecast(forecastResponse.data.daily);
+          setTimeZone(forecastResponse.data.timezone);
 
         } catch (err) {
           console.log(err);
@@ -46,6 +49,7 @@ function App() {
     hourlyForecast: hourlyForecast,
     dailyForecast: dailyForecast,
     displayUnits: displayUnits,
+    timezone: timezone
   }
 
   const headingProps = {
@@ -56,7 +60,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App min-h-screen py-12">
       <Heading props={headingProps} />
 
       <Weather props={weatherProps} />

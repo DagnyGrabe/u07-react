@@ -12,13 +12,12 @@ function SearchBox({ setLat, setLon }) {
     const geoUrl = `${GEO_API_URL}&namePrefix=${query}`
 
     useEffect(() => {
+        /* loads a list of locations matching user input in searchbox */
         const loadOptions = setTimeout(async () => {
             if (query.length > 1) {
                 try {
                     const geoResponse = await axios.get(geoUrl, geoApiOptions);
-                    console.log(geoResponse);
                     setOptions(geoResponse.data.data);
-                    console.log(options);
 
                 } catch (err) {
                     console.error(err);
@@ -37,24 +36,27 @@ function SearchBox({ setLat, setLon }) {
     }
 
     return (
-        <form className="mx-12 w-1/2">
+        <form className="w-full xs:w-4/5 sm:w-3/5 md:w-1/2 lg:mr-2 pr-4 xs:pr-0">
             <input
-                className="w-full rounded-3xl px-8 py-2 bg-white bg-opacity-30 text-shadow
-                text-white text-lg border-2 border-white placeholder:text-gray-900 
+                className="w-full rounded-3xl px-8 py-2 bg-white bg-opacity-25
+                text-md sm:text-lg border-2 border-white placeholder:text-gray-800 
                 placeholder:font-medium inner transition duration-250 focus:outline-none"
                 type="search"
                 placeholder="Search location..."
                 onChange={(e) => setQuery(e.target.value)}
                 name="search">
             </input>
-            <ul className={`${options? "border-2" : "" } w-10/12 mx-2 mt-2 flex flex-col 
+
+            {/* renders a list of location options from the Geocode api when options is set */}
+            <ul className={`${options? "" : "hidden" } w-10/12 mx-2 mt-2 flex flex-col 
                 justify-start items-start rounded-2xl overflow-hidden bg-white 
-                bg-opacity-30 border-white`}>
+                bg-opacity-25 border-white border-2`}>
+
                 {options && options.map((city) => 
                 <li key={city.id}
                     className="w-full">
                     <button
-                    className="px-6 py-2 w-full text-start text-gray-900 cursor-pointer 
+                    className="px-6 py-2 w-full text-start text-gray-800 cursor-pointer 
                     transition duration-250 inner rounded-xl"
                     type="submit"
                     onClick={(e) => selectOption(e.target)}

@@ -2,11 +2,11 @@ import { useState } from "react";
 import ExpandButton from "./expand-button";
 
 
-function HourlyCard({ item, displayUnits, getWindDirection }) {
+function HourlyCard({ item, displayUnits, getWindDirection, timezone }) {
 
     const getHour = (time) => {
         let hour = new Date(time * 1000).toLocaleTimeString(
-            [], { hour: '2-digit', hour12: false });
+            [], { hour: '2-digit', hour12: false, timeZone: timezone });
         return hour;
     }
 

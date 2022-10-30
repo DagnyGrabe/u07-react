@@ -3,13 +3,13 @@ import DetailsList from "../details-list";
 import ExpandButton from "./expand-button";
 
 
-function DailyCard({ item, displayUnits, getWindDirection }) {
+function DailyCard({ item, displayUnits, getWindDirection, timezone }) {
 
     const [expanded, setExpanded] = useState(false);
 
     const getDay = (day) => {
         let weekDay = new Date(day * 1000).toLocaleDateString(
-            'en', { weekday: 'long' });
+            'en', { weekday: 'long', timeZone: timezone });
         return weekDay;
     }
 
@@ -34,7 +34,7 @@ function DailyCard({ item, displayUnits, getWindDirection }) {
 
             <div className={`${expanded ? "" : "hidden"} text-sm py-2 px-4`}>
                 <DetailsList item={item} displayUnits={displayUnits} 
-                getWindDirection={getWindDirection} />
+                getWindDirection={getWindDirection} timezone={timezone} />
             </div>
             <ExpandButton expanded={expanded} setExpanded={setExpanded} />
         </div>
