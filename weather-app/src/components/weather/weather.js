@@ -10,8 +10,8 @@ function Weather({props}) {
     }
 
     return (
-        <div className="container w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12 mx-auto mt-4 mb-12 flex 
-             flex-col justify-start text-white text-shadow">
+        <div className="container w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12 mx-auto mt-6
+             flex flex-col justify-start text-white text-shadow xs:min-h-[40px] lg:min-h-[100px]">
 
             {props.currentWeather && <CurrentWeather data={props.currentWeather} 
                 item={props.dailyForecast[0]} displayUnits={props.displayUnits} 

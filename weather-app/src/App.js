@@ -3,6 +3,7 @@ import axios from "axios";
 import { WEATHER_API_URL, WEATHER_API_KEY } from './api';
 import Weather from "./components/weather/weather";
 import Heading from "./components/heading/heading";
+import Footer from "./components/footer";
 
 function App() {
 
@@ -60,10 +61,12 @@ function App() {
   }
 
   return (
-    <div className="App min-h-screen py-12">
+    <div className="App min-h-screen py-8">
       <Heading props={headingProps} />
 
       <Weather props={weatherProps} />
+
+      <Footer />
 
     </div>
   );

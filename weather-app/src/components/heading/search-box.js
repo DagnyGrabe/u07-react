@@ -36,11 +36,12 @@ function SearchBox({ setLat, setLon }) {
     }
 
     return (
-        <form className="w-full xs:w-4/5 sm:w-3/5 md:w-1/2 lg:mr-2 pr-4 xs:pr-0">
+        <form className="w-full sm:w-3/4 md:w-1/2">
             <input
-                className="w-full rounded-3xl px-8 py-2 bg-white bg-opacity-25
-                text-md sm:text-lg border-2 border-white placeholder:text-gray-800 
-                placeholder:font-medium inner transition duration-250 focus:outline-none"
+                className="w-full rounded-full px-6 py-2 bg-transparent
+                text-sm xs:text-md lg:text-lg placeholder:text-gray-800 
+                placeholder:font-medium inner transition duration-500 focus:outline-none
+                text-white text-shadow text-center xs:text-start border-4 border-white border-opacity-60"
                 type="search"
                 placeholder="Search location..."
                 onChange={(e) => setQuery(e.target.value)}
@@ -49,15 +50,15 @@ function SearchBox({ setLat, setLon }) {
 
             {/* renders a list of location options from the Geocode api when options is set */}
             <ul className={`${options? "" : "hidden" } w-10/12 mx-2 mt-2 flex flex-col 
-                justify-start items-start rounded-2xl overflow-hidden bg-white 
-                bg-opacity-25 border-white border-2`}>
+                justify-start items-start rounded-xl overflow-hidden  bg-white bg-opacity-25
+                border-4 border-white border-opacity-60`}>
 
                 {options && options.map((city) => 
                 <li key={city.id}
                     className="w-full">
                     <button
                     className="px-6 py-2 w-full text-start text-gray-800 cursor-pointer 
-                    transition duration-250 inner rounded-xl"
+                    transition duration-300 inner text-sm xs:text-md md:text-lg"
                     type="submit"
                     onClick={(e) => selectOption(e.target)}
                     value={`${city.latitude} ${city.longitude}`}

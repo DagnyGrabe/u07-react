@@ -5,26 +5,27 @@ import SearchBox from './search-box';
 function Heading({ props }) {
 
     return (
-        <div>
 
-            <h1 className="font-bold text-5xl sm:text-6xl mb-4 sm:mb-6 bg-white 
-                uppercase bg-opacity-70 relative p-8 xs:px-14">
-                <p className="headline w-72 sm:w-80">
+        <div className="static">
+            <div className=" mb-4 py-8 px-12 sm:px-12 bg-white 
+                bg-opacity-60 ">
+                <h1 className="headline w-60 xs:w-72 sm:w-80 font-bold 
+                    text-4xl xs:text-5xl sm:text-6xl uppercase tracking-tighter">
                     Generic Weather App
-                </p>
-            </h1>
-
-            <div className="container w-11/12 sm:w-10/12 lg:w-9/12 xl:w-8/12 mx-auto 
-                 flex flex-col lg:flex-row items-baseline text-white text-shadow">
-                <SearchBox setLat={props.setLat} setLon={props.setLon} />
-                <div className="flex flex-col sm:flex-row my-2">
-                    <UserPositionButton setLat={props.setLat} setLon={props.setLon} />
-                    <UnitsButton setUnits={props.setUnits} setDisplayUnits={props.setDisplayUnits} />
-                </div>
-
+                </h1>
             </div>
-        </div>
 
+                <div className="container flex flex-col md:flex-row justify-between items-stretch sm:items-baseline
+                       w-11/12 xs:w-10/12 xl:w-9/12 mx-auto">
+
+                    <div className="flex flex-col xs:flex-row justify-between md:justify-start my-2 w-full sm:w-3/4 md:w-1/2">
+                        <UserPositionButton setLat={props.setLat} setLon={props.setLon} />
+                        <UnitsButton setUnits={props.setUnits} setDisplayUnits={props.setDisplayUnits} />
+                    </div>
+                    <SearchBox setLat={props.setLat} setLon={props.setLon} />
+                </div>
+            
+        </div>
     );
 
 }
