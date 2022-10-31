@@ -34,7 +34,7 @@ input::placeholder {
     text-shadow: none;
 }
 
-.headline, .footer-text {
+.headline {
     background-image: url('sunset.jpg');
     background-position: absolute;
     background-size: 100% 100%;
@@ -45,15 +45,17 @@ input::placeholder {
     filter: brightness(70%) saturate(130%);  
 }
 
-.background {
+.footer-text {
     background-image: url('sunset.jpg');
     background-position: absolute;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-clip: border-box;
-    background-color: rgba(0, 0, 0, 0.3);
-    background-blend-mode: saturation;
+    background-clip: text;
+    color: transparent;
+    filter: brightness(50%);  
+    
+    
     
     
 }
