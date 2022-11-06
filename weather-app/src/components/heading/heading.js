@@ -7,12 +7,12 @@ function Heading({ props }) {
     return (
 
         <div className="static">
-            <div className=" mb-4 py-8 px-12 sm:px-12 bg-white 
-                bg-opacity-60 ">
-                <h1 className="headline w-60 xs:w-72 sm:w-80 font-bold 
+            <div className="bg-white bg-opacity-60 mb-4">
+                <h1 className="headline w-60 xs:w-72 sm:w-80 font-bold py-8 mx-8 sm:mx-12
                     text-4xl xs:text-5xl sm:text-6xl uppercase tracking-tighter">
                     Generic Weather App
                 </h1>
+                
             </div>
 
                 <div className="container flex flex-col md:flex-row justify-between items-stretch sm:items-baseline

@@ -4,7 +4,7 @@ function Footer() {
 
     return (
         <div className="bg-white bg-opacity-60 w-full static p-8 mt-10">
-            <div className="footer-text flex flex-col justify-center 
+            <div className="static flex flex-col justify-center text-dark-brown 
                 text-md sm:text-lg font-bold items-center text-center">
                 <p className="mx-1 my-1">
                     Geocoding provided by  

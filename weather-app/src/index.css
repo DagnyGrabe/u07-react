@@ -12,14 +12,16 @@ body {
     background-image: url('sunset.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    background-position: fill;
     background-attachment: fixed;
 
 }
 
 #root {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-    background-attachment: fixed;
+    background-position: absolute;
     background-size: 100% 100%;
+    background-attachment: fixed;
 }
 
 .text-shadow {
@@ -36,28 +38,14 @@ input::placeholder {
 
 .headline {
     background-image: url('sunset.jpg');
-    background-position: absolute;
-    background-size: 100% 100%;
+    
+    background-size: 300% 300%;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: local;
     background-clip: text;
     color: transparent;
-    filter: brightness(70%) saturate(130%);  
-}
-
-.footer-text {
-    background-image: url('sunset.jpg');
-    background-position: absolute;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-clip: text;
-    color: transparent;
-    filter: brightness(50%);  
-    
-    
-    
-    
+    filter: brightness(80%) saturate(120%);  
+    z-index: 10;
 }
 
 
