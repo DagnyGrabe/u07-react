@@ -1,9 +1,7 @@
 import HourlyCard from "./hourly-card";
 
 
-
 function HourlyForecast({ data, displayUnits, getWindDirection, timezone }) {
-
 
     const next24 = data.slice(1, 25);
 
@@ -17,9 +15,7 @@ function HourlyForecast({ data, displayUnits, getWindDirection, timezone }) {
                 ))}
             </div>
         </>
-
     );
-
 }
 
 export default HourlyForecast;

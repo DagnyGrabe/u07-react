@@ -7,7 +7,6 @@ function UserPositionButton({ setLat, setLon }) {
             setLat(position.coords.latitude);
             setLon(position.coords.longitude);
         });
-
     }
        
     return (

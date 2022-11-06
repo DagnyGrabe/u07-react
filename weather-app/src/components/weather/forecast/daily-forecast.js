@@ -5,7 +5,6 @@ function DailyForecast({ data, displayUnits, getWindDirection, timezone }) {
 
     const nextWeek = data.slice(1, 8);
 
-
     return (
         <>
             <h3 className="text-xl sm:text-2xl font-bold uppercase mt-8">This week</h3>
@@ -16,9 +15,7 @@ function DailyForecast({ data, displayUnits, getWindDirection, timezone }) {
                 ))}
             </div>
         </>
-
     );
-
 }
 
 export default DailyForecast;

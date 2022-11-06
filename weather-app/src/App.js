@@ -67,7 +67,6 @@ function App() {
       <Weather props={weatherProps} />
 
       <Footer />
-
     </div>
   );
 }

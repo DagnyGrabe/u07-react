@@ -12,7 +12,6 @@ function HourlyCard({ item, displayUnits, getWindDirection, timezone }) {
 
     const [expanded, setExpanded] = useState(false);
 
-
     return (
         <div className="mx-1 rounded-xl bg-white bg-opacity-25 
              w-28 flex-shrink-0 text-center">

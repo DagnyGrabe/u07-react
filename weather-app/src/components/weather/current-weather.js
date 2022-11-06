@@ -5,7 +5,6 @@ const CurrentWeather = ({ data, item, displayUnits, getWindDirection, timezone }
 
     const feelsLike = data.main.feels_like;
 
-
     return (
         <>
             <h3 className="uppercase text-xl sm:text-2xl font-bold mt-2 lg:mt-8 mb-2">Current</h3>
@@ -25,7 +24,6 @@ const CurrentWeather = ({ data, item, displayUnits, getWindDirection, timezone }
                     <p className="text-xl md:text-2xl">
                         {data.weather[0].description}
                     </p>
-
                 </div>
 
                 <div className="flex flex-col justify-between items-center sm:items-end sm:ml-4">

@@ -26,7 +26,6 @@ function Weather({props}) {
                 timezone={props.timezone} />}
         </div>
     );
-
 }
 
 export default Weather;

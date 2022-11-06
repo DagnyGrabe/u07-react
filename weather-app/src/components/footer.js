@@ -23,12 +23,9 @@ function Footer() {
                         OpenWeather
                     </a>
                 </p>
-
             </div>
-
         </div>
     );
-
 }
 
 export default Footer;

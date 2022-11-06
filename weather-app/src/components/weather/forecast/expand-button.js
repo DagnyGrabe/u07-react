@@ -11,11 +11,8 @@ function ExpandButton({ expanded, setExpanded }) {
             <p className={`${expanded ? "rotate-180" : ""}`}>
                 <FaChevronDown />
             </p>
-
         </button>
-
     );
-
 }
 
 export default ExpandButton;
