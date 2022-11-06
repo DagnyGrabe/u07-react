@@ -4,4 +4,4 @@
 npm start
 ```
 
-A simple weather app built on react using weather data from Openweathermap and Geocoding by GeoDB.
+A simple weather app built on React with Tailwind CSS, using weather data from Openweathermap and Geocoding by GeoDB.
